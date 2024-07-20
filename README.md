@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Custom Pause Menu Script is designed for FiveM servers to provide a highly customizable pause menu. It integrates with various frameworks and supports a range of notification systems and sound effects. This guide will walk you through installation, configuration, usage, troubleshooting, and additional support.
+The Custom Pause Menu Script is designed for FiveM servers to provide a customizable pause menu. It integrates with various frameworks and supports a range of notification systems and sound effects. This guide will walk you through installation, configuration, usage, troubleshooting, and additional support.
 
 ## Features
 
