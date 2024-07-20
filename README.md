@@ -110,7 +110,7 @@ Config.Lang = {
     WhenNoTabletItem = 'You do not have the Tablet item!',
     NoMapItem = 'You do not have the Map item!',
 }
-
+```
 ## FAQ
 
 ### Why are notifications not appearing in the game?
