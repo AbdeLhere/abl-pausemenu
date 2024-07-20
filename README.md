@@ -53,22 +53,23 @@ Config = {}
 
 Config.System = {
     Debug = {
-        UseDebug = 'no',
+        UseDebug = 'no', -- Enable debug prints in the script. Set to 'yes' to activate.
     },
     Framework = {
-        Core = 'QBCore',        
-        FolderName = 'qb-core',
+        Core = 'QBCore',        -- The core framework being used. Options: [QBCore / NewESX / OldESX]
+        FolderName = 'qb-core', -- The folder name where the core object is located. Options: [es_extended / getSharedObject / qb-core / ...]
     },
     Notify = {
-        NotifyType = 'OX',
-        NotifyTime = 1500, 
+        NotifyType = 'OX', -- Type of notification system to use. Options: [DefaultQB / DefaultESX / OX / okokNotify / BrutalNotify / DefaultGTA / None]
+        NotifyTime = 1500, -- Duration of notifications in milliseconds. This setting does not apply to NotifyType = "DefaultGTA".
         UseFor = {
-            WhenUIMenuOpen = { string = 'no', type = 'success' },
-            WhenUIMenuClose = { string = 'no', type = 'success' },
-            WhenSettingsOpen = { string = 'no', type = 'success' },
-            WhenMapOpen = { string = 'yes', type = 'success' },
-            WhenNoMapItem = { string = 'yes', type = 'error' },
-            WhenNoTabletItem = { string = 'yes', type = 'success' },
+            -- Note! This setting does not apply to NotifyType =  "DefaultGTA". Emojis can be added like "❌" or "✅" to the notifications.
+            WhenUIMenuOpen = { string = 'no', type = 'success' },    -- Notification when the UI menu is opened. Options: [ 'yes' / 'no'], Notification type: [ 'success', 'error', 'primary' ]
+            WhenUIMenuClose = { string = 'no', type = 'success' },   -- Notification when the UI menu is closed. Options: [ 'yes' / 'no'], Notification type: [ 'success', 'error', 'primary' ]
+            WhenSettingsOpen = { string = 'no', type = 'success' },  -- Notification when the settings menu is opened. Options: [ 'yes' / 'no'], Notification type: [ 'success', 'error', 'primary' ]
+            WhenMapOpen = { string = 'yes', type = 'success' },      -- Notification when the map is opened. Options: [ 'yes' / 'no'], Notification type: [ 'success', 'error', 'primary' ]
+            WhenNoMapItem = { string = 'yes', type = 'error' },      -- Notification when the map item is not found. Options: [ 'yes' / 'no'], Notification type: [ 'success', 'error', 'primary' ]
+            WhenNoTabletItem = { string = 'yes', type = 'success' }, -- Notification when the tablet item is not found. Options: [ 'yes' / 'no'], Notification type: [ 'success', 'error', 'primary' ]
         }
     },
 }
@@ -76,33 +77,38 @@ Config.System = {
 Config.Options = {
     UIMenu = {
         Sounds = {
-            PopUpSoundOpen = 'no', 
-            PopUpSoundClose = 'no', 
-            MapPaperSound = 'yes', 
-            SettingsSound = 'no'    
+            PopUpSoundOpen = 'no',  -- Use a custom sound when the UI opens. Options: [ 'yes' / 'no']
+            PopUpSoundClose = 'no', -- Use a custom sound when the UI closes. Options: [ 'yes' / 'no']
+            MapPaperSound = 'yes',  -- Use a custom sound when the map is opened. Options: [ 'yes' / 'no']
+            SettingsSound = 'no'    -- Use a custom sound when the settings menu opens. Options: [ 'yes' / 'no']
         },
         Command = {
-            UseCommand = 'yes',      
-            CommandName = 'PauseMenu',
+            UseCommand = 'yes',        -- Enable or disable the use of a command to open the menu. Options: [ 'yes' / 'no']
+            CommandName = 'PauseMenu', -- The command name to open the menu. Default is 'PauseMenu'.
         },
+        Keybind = { 
+            Key = 200
+        }
     },
     MapItem = {
-        NeedItemForMap = 'yes', 
-        ItemName = 'tablet',     
-        CloseUIIfNoItem = 'yes', 
+        NeedItemForMap = 'yes',  -- Specify if a specific item is required to open the map. Options: [ 'yes' / 'no']
+        ItemName = 'tablet',     -- The name of the item required to open the map (e.g., 'tablet').
+        CloseUIIfNoItem = 'yes', -- Close the UI if the required item is not found. Options: [ 'yes' / 'no']
     },
     Camera = {
-        InVehicle = 'yes', 
-        Walking = 'yes'    
+        InVehicle = 'yes', -- Change the camera to first-person view when opening the pause menu while in a vehicle. Options: [ 'yes' / 'no']
+        Walking = 'yes'    -- Change the camera to first-person view when opening the pause menu while on foot. Options: [ 'yes' / 'no']
     },
-    OnNUIStart = function() 
+    OnNUIStart = function() -- Add any additional functionality you want to execute when the menu opens.
     end,
-    OnNUIClose = function() 
+    OnNUIClose = function() -- Add any additional functionality you want to execute when the menu closes.
     end
 }
 
 Config.Lang = {
+    ----------- Others
     QuitMessage = 'You have left! We hope you enjoyed and liked our custom server!',
+    ----------- Notify
     WhenUIMenuOpen = 'Menu Opened!',
     WhenUIMenuClose = 'Menu Closed!',
     WhenSettingsOpen = 'Settings Opened!',
