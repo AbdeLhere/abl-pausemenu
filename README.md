@@ -140,7 +140,7 @@ Config.Lang = {
 ### Opening and Closing the Menu
 
 - **Command**: Use the command specified in `Config.Options.UIMenu.Command.CommandName` (default: `/PauseMenu`) to open the menu.
-- **Control Key**: By default, the menu can be toggled with the `F1` key. Ensure that the key binding does not conflict with other controls.
+- **Control Key**: By default, the menu can be toggled with the Escape `ESC` key. Ensure that the key binding does not conflict with other controls.
 
 ### Notifications and Sounds
 
