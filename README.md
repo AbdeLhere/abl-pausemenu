@@ -1,8 +1,8 @@
-# Custom Pause Menu Script for FiveM
+# Custom Pause Menu Script for FiveM by abdel4999
 
 ## Overview
 
-The Custom Pause Menu Script is designed for FiveM servers to provide a customizable pause menu. It integrates with various frameworks and supports a range of notification systems and sound effects. This guide will walk you through installation, configuration, usage, troubleshooting, and additional support.
+The Custom Pause Menu Script is designed for FiveM servers to provide a highly customizable pause menu. It integrates with various frameworks and supports a range of notification systems and sound effects. This guide will walk you through installation, configuration, usage, troubleshooting, and additional support.
 
 ## Features
 
@@ -11,7 +11,10 @@ The Custom Pause Menu Script is designed for FiveM servers to provide a customiz
 - **Sound Effects**: Customizable sounds for menu actions (opening, closing, map interactions).
 - **Item-Based Map Access**: Option to require a specific item to access the map.
 - **Camera Adjustments**: Automatic camera view changes based on player status (in vehicle or walking).
-- **Command and UI Customization**: Set up commands to open the menu and adjust UI settings.
+- **Command and UI Customization**: Set up commands or keybind to open the menu and adjust UI settings.
+- **Player Information**: Shows player details like name, job, cash, bank, phone, birthdate and nationality.
+- **Server Information**: Displays server name, country, creation date, server owners, and staff number.
+- **Disconnect Option**: Players can easily disconnect using the "Disconnect" button, which provides a user-friendly confirmation message and a pleasant farewell note when they quit.
 
 ## Installation
 
@@ -53,23 +56,22 @@ Config = {}
 
 Config.System = {
     Debug = {
-        UseDebug = 'no', -- Enable debug prints in the script. Set to 'yes' to activate.
+        UseDebug = 'no',
     },
     Framework = {
-        Core = 'QBCore',        -- The core framework being used. Options: [QBCore / NewESX / OldESX]
-        FolderName = 'qb-core', -- The folder name where the core object is located. Options: [es_extended / getSharedObject / qb-core / ...]
+        Core = 'QBCore',        
+        FolderName = 'qb-core',
     },
     Notify = {
-        NotifyType = 'OX', -- Type of notification system to use. Options: [DefaultQB / DefaultESX / OX / okokNotify / BrutalNotify / DefaultGTA / None]
-        NotifyTime = 1500, -- Duration of notifications in milliseconds. This setting does not apply to NotifyType = "DefaultGTA".
+        NotifyType = 'OX',
+        NotifyTime = 1500, 
         UseFor = {
-            -- Note! This setting does not apply to NotifyType =  "DefaultGTA". Emojis can be added like "❌" or "✅" to the notifications.
-            WhenUIMenuOpen = { string = 'no', type = 'success' },    -- Notification when the UI menu is opened. Options: [ 'yes' / 'no'], Notification type: [ 'success', 'error', 'primary' ]
-            WhenUIMenuClose = { string = 'no', type = 'success' },   -- Notification when the UI menu is closed. Options: [ 'yes' / 'no'], Notification type: [ 'success', 'error', 'primary' ]
-            WhenSettingsOpen = { string = 'no', type = 'success' },  -- Notification when the settings menu is opened. Options: [ 'yes' / 'no'], Notification type: [ 'success', 'error', 'primary' ]
-            WhenMapOpen = { string = 'yes', type = 'success' },      -- Notification when the map is opened. Options: [ 'yes' / 'no'], Notification type: [ 'success', 'error', 'primary' ]
-            WhenNoMapItem = { string = 'yes', type = 'error' },      -- Notification when the map item is not found. Options: [ 'yes' / 'no'], Notification type: [ 'success', 'error', 'primary' ]
-            WhenNoTabletItem = { string = 'yes', type = 'success' }, -- Notification when the tablet item is not found. Options: [ 'yes' / 'no'], Notification type: [ 'success', 'error', 'primary' ]
+            WhenUIMenuOpen = { string = 'no', type = 'success' },
+            WhenUIMenuClose = { string = 'no', type = 'success' },
+            WhenSettingsOpen = { string = 'no', type = 'success' },
+            WhenMapOpen = { string = 'yes', type = 'success' },
+            WhenNoMapItem = { string = 'yes', type = 'error' },
+            WhenNoTabletItem = { string = 'yes', type = 'success' },
         }
     },
 }
@@ -77,38 +79,33 @@ Config.System = {
 Config.Options = {
     UIMenu = {
         Sounds = {
-            PopUpSoundOpen = 'no',  -- Use a custom sound when the UI opens. Options: [ 'yes' / 'no']
-            PopUpSoundClose = 'no', -- Use a custom sound when the UI closes. Options: [ 'yes' / 'no']
-            MapPaperSound = 'yes',  -- Use a custom sound when the map is opened. Options: [ 'yes' / 'no']
-            SettingsSound = 'no'    -- Use a custom sound when the settings menu opens. Options: [ 'yes' / 'no']
+            PopUpSoundOpen = 'no', 
+            PopUpSoundClose = 'no', 
+            MapPaperSound = 'yes', 
+            SettingsSound = 'no'    
         },
         Command = {
-            UseCommand = 'yes',        -- Enable or disable the use of a command to open the menu. Options: [ 'yes' / 'no']
-            CommandName = 'PauseMenu', -- The command name to open the menu. Default is 'PauseMenu'.
+            UseCommand = 'yes',      
+            CommandName = 'PauseMenu',
         },
-        Keybind = { 
-            Key = 200
-        }
     },
     MapItem = {
-        NeedItemForMap = 'yes',  -- Specify if a specific item is required to open the map. Options: [ 'yes' / 'no']
-        ItemName = 'tablet',     -- The name of the item required to open the map (e.g., 'tablet').
-        CloseUIIfNoItem = 'yes', -- Close the UI if the required item is not found. Options: [ 'yes' / 'no']
+        NeedItemForMap = 'yes', 
+        ItemName = 'tablet',     
+        CloseUIIfNoItem = 'yes', 
     },
     Camera = {
-        InVehicle = 'yes', -- Change the camera to first-person view when opening the pause menu while in a vehicle. Options: [ 'yes' / 'no']
-        Walking = 'yes'    -- Change the camera to first-person view when opening the pause menu while on foot. Options: [ 'yes' / 'no']
+        InVehicle = 'yes', 
+        Walking = 'yes'    
     },
-    OnNUIStart = function() -- Add any additional functionality you want to execute when the menu opens.
+    OnNUIStart = function() 
     end,
-    OnNUIClose = function() -- Add any additional functionality you want to execute when the menu closes.
+    OnNUIClose = function() 
     end
 }
 
 Config.Lang = {
-    ----------- Others
     QuitMessage = 'You have left! We hope you enjoyed and liked our custom server!',
-    ----------- Notify
     WhenUIMenuOpen = 'Menu Opened!',
     WhenUIMenuClose = 'Menu Closed!',
     WhenSettingsOpen = 'Settings Opened!',
@@ -132,15 +129,17 @@ Config.Lang = {
 
 ### How do I contribute to the script or report bugs?
 
-- **Contributing**: Fork the repository, make your changes, and submit a pull request with a clear description of the modifications.
-- **Reporting Bugs**: Open an issue on the GitHub repository with detailed information about the bug, including steps to reproduce, error messages, and any relevant configuration.
+- **Contributing**: We appreciate contributions! If you have suggestions or improvements, please reach out to us directly through our official ([Discord Server](https://discord.gg/jgM5jW3rrN)).
+- **Reporting Bugs**: Since this is a paid script, please report any issues by opening a ticket in our ([Discord Server](https://discord.gg/jgM5jW3rrN)). Provide detailed information about the bug, including steps to reproduce, error messages, and any relevant configuration.
+- **Resale and Redistribution**: Please note that this script is paid, and you do not have permission to resell, repost, or leak it for free. Unauthorized distribution is strictly prohibited.
 
-## Usage
+
+### Usage
 
 ### Opening and Closing the Menu
 
 - **Command**: Use the command specified in `Config.Options.UIMenu.Command.CommandName` (default: `/PauseMenu`) to open the menu.
-- **Control Key**: By default, the menu can be toggled with the Escape `ESC` key. Ensure that the key binding does not conflict with other controls.
+- **Control Key**: By default, the menu can be toggled with the `ECS` key. Ensure that the key binding does not conflict with other controls.
 
 ### Notifications and Sounds
 
